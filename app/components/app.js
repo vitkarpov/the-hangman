@@ -1,11 +1,17 @@
 const StartGameButton = require("../components/start-game-button");
+const Timer = require("../components/timer");
 
 class App {
-  render({ started }) {
+  render({ started, lost }) {
     if (!started) {
       return new StartGameButton().render();
     }
-    return "game";
+    if (lost) {
+      return "You lost the game!";
+    }
+    return `
+      <div class="timer-wrapper">${new Timer().render()}</div>
+    `;
   }
 }
 

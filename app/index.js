@@ -5,7 +5,9 @@ const render = require("./lib/render");
 const app = new App();
 const renderApp = () => {
   const props = {
-    started: state.started
+    started: state.started,
+    won: state.won,
+    lost: state.lost
   };
   state.eventBus.emit("unmount");
   render(app.render(props), document.getElementById("app"));

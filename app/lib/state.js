@@ -5,6 +5,8 @@ const PubSub = require("./pubsub");
  */
 const state = {
   started: false,
+  won: false,
+  lost: false,
   eventBus: new PubSub()
 };
 
