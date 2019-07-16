@@ -2,13 +2,13 @@
   "name": "ve-global",
   "version": "1.0.0",
   "description": "The Hangman Game. Pure JavaScript. No Frameworks.",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "./node_modules/.bin/parcel hangman.html",
+    "test": "./node_modules/.bin/jest ./app/**/*.test.js"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "parsel": "^0.3.0"
+  "author": "Viktor Karpov <viktor.s.karpov@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
   }
 }
