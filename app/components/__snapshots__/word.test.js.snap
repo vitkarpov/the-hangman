@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Word renders correctly 1`] = `
+"
+      <div class=\\"word\\">
+        <div class=\\"word-item\\">h</div><div class=\\"word-item\\">_</div><div class=\\"word-item\\">_</div><div class=\\"word-item\\">l</div><div class=\\"word-item\\">o</div>
+      </div>
+    "
+`;
