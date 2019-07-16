@@ -1,16 +1,16 @@
 const state = require("../lib/state");
 
 class Timer {
-  constructor() {
-    let secondsPassed = 0;
+  constructor(props = {}) {
+    this.timer = props.timer || 0;
 
     state.eventBus.once("mount", () => {
       this.timerId = setInterval(() => {
-        if (secondsPassed === 30) {
+        if (this.timer === 30) {
           state.lost = true;
           state.eventBus.emit("rerender");
         } else {
-          document.querySelector(".timer").innerText = ++secondsPassed;
+          document.querySelector(".timer").innerText = ++this.timer;
         }
       }, 1000);
     });
@@ -20,7 +20,7 @@ class Timer {
   }
 
   render() {
-    return `<span class="timer">0</span>`;
+    return `<span class="timer">${this.timer}</span>`;
   }
 }
 

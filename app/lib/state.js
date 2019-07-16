@@ -7,6 +7,7 @@ const state = {
   started: false,
   won: false,
   lost: false,
+  timer: 0,
   eventBus: new PubSub()
 };
 
