@@ -9,6 +9,7 @@
   "author": "Viktor Karpov <viktor.s.karpov@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "jest": "^24.8.0",
     "parcel-bundler": "^1.12.3"
   }
 }
