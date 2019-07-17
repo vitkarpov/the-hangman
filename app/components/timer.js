@@ -15,6 +15,7 @@ class Timer {
       }, 1000);
     });
     state.eventBus.once("unmount", () => {
+      state.timer = this.timer;
       clearInterval(this.timerId);
     });
   }

@@ -17,6 +17,7 @@ function getProps() {
     started: state.started,
     won: state.won,
     lost: state.lost,
-    currWord: state.currWord
+    currWord: state.currWord,
+    timer: state.timer
   };
 }
