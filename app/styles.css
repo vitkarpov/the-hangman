@@ -21,6 +21,11 @@ body {
   margin-top: auto;
 }
 
+.text-wrapper {
+  text-align: center;
+  margin: 20px 0;
+}
+
 .start-button {
   border: 1px solid lightgrey;
   background: lightyellow;
@@ -30,10 +35,15 @@ body {
 }
 
 .hangman-sprite {
+  display: inline-block;
   width: 256px;
   height: 256px;
   background-image: url('./assets/hangman-sprite.png');
   background-repeat: no-repeat;
+}
+
+.text-wrapper .hangman-sprite {
+  margin-top: 50px;
 }
 
 .layout {

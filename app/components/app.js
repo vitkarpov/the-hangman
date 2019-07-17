@@ -1,6 +1,7 @@
 const StartGameButton = require("../components/start-game-button");
 const Timer = require("../components/timer");
 const Word = require("../components/word");
+const Hangman = require("../components/hangman");
 const state = require("../lib/state");
 const guess = require("../lib/guess");
 const arrayEq = require("../lib/array-eq");
@@ -41,17 +42,31 @@ class App {
 
   render({ started, lost, won, misses, timer, currWord }) {
     if (!started) {
-      return new StartGameButton({ title: "Start the game!" }).render();
+      return `
+        <div class="text-wrapper">
+          ${new StartGameButton({ title: "Start the game!" }).render()}
+        </div>
+      `;
     }
     if (lost) {
-      return `You couldn't make it this time, let's ${new StartGameButton({
-        title: "try again"
-      }).render()} 😉`;
+      return `
+      <div class="text-wrapper">
+        You couldn't make it this time, let's ${new StartGameButton({
+          title: "try again"
+        }).render()} 😉
+        <br />
+        ${new Hangman({ misses }).render()}
+      </div>
+      `;
     }
     if (won) {
-      return `You did it, congrats! 🎉 Do you want to ${new StartGameButton({
-        title: "play again"
-      }).render()}?`;
+      return `
+      <div class="text-wrapper">
+        You did it, congrats! 🎉 Do you want to ${new StartGameButton({
+          title: "play again"
+        }).render()}?
+      </div>
+      `;
     }
     return `
       <div class="layout">
@@ -64,12 +79,8 @@ class App {
           </div>
         </div>
         <div class="right-col">
-          <div class="hangman-sprite"
-            style="background-position: 0 ${-256 * misses.length}px;"
-          ></div>
-          <div class="misses">
-            Misses: ${misses.join(", ")}
-          </div>
+          ${new Hangman({ misses }).render()}
+          <div class="misses">Misses: ${misses.join(", ")}</div>
         </div>
       </div>
     `;
