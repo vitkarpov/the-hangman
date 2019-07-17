@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hangman renders correctly 1`] = `
+"
+      <div class=\\"hangman-sprite\\"
+        style=\\"background-position: 0 -768px;\\"
+      ></div>
+    "
+`;
