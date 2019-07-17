@@ -3,11 +3,12 @@ html {
 }
 
 body {
-  max-width: 800px;
+  max-width: 768px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  padding: 0 20px;
 }
 
 #app {
@@ -40,15 +41,19 @@ body {
   height: 256px;
   background-image: url('./assets/hangman-sprite.png');
   background-repeat: no-repeat;
-}
-
-.text-wrapper .hangman-sprite {
   margin-top: 50px;
 }
 
 .layout {
   display: flex;
 }
+
+@media only screen and (max-width: 425px) {
+  .layout {
+    flex-direction: column;
+  }
+}
+
 
 .left-col,
 .right-col {
