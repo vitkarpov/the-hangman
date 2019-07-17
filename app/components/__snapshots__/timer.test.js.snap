@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Timer renders correctly 1`] = `"<span class=\\"timer\\">0</span>"`;
+exports[`Timer renders correctly 1`] = `
+"
+      You have <span class=\\"timer\\" style=\\"border: 1px solid green;\\">30</span> seconds to guess!
+    "
+`;
