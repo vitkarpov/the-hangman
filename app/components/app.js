@@ -3,6 +3,7 @@ const Timer = require("../components/timer");
 const Word = require("../components/word");
 const state = require("../lib/state");
 const guess = require("../lib/guess");
+const arrayEq = require("../lib/array-eq");
 
 class App {
   constructor() {
@@ -15,18 +16,25 @@ class App {
   }
 
   onKeyUp(e) {
-    if (!state.get('started') || state.get('won')) {
+    if (!state.get("started") || state.get("won") || state.get("lost")) {
       return;
     }
     if ("a" <= e.key && e.key <= "z") {
-      const nextWord = guess(e.key, state.get('refWord'), state.get('currWord'));
+      const nextWord = guess(
+        e.key,
+        state.get("refWord"),
+        state.get("currWord")
+      );
 
-      if (nextWord.join("") === state.get('currWord').join("")) {
-        state.get('misses').push(e.key);
-      } else if (nextWord.join("") === state.get('refWord').join("")) {
-        state.set('won', true);
+      if (arrayEq(nextWord, state.get("currWord"))) {
+        state.get("misses").push(e.key);
+        if (state.get("misses").length === 7) {
+          state.set("lost", true);
+        }
+      } else if (arrayEq(nextWord, state.get("refWord"))) {
+        state.set("won", true);
       }
-      state.set('currWord', nextWord);
+      state.set("currWord", nextWord);
       state.eventBus.emit("rerender");
     }
   }
@@ -41,9 +49,9 @@ class App {
       }).render()} 😉`;
     }
     if (won) {
-      return `You did it, congrats! 🎉 Do you want to ${new StartGameButton(
-        { title: "play again" }
-      ).render()}?`;
+      return `You did it, congrats! 🎉 Do you want to ${new StartGameButton({
+        title: "play again"
+      }).render()}?`;
     }
     return `
       <div class="layout">

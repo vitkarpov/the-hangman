@@ -8,7 +8,7 @@ const refWord = wordList[getRandomInt(wordList.length - 1)].split("");
 const state = {
   started: false,
   won: false,
-  timeIsOff: false,
+  lost: false,
   misses: [],
   timer: 0,
   refWord,
@@ -39,7 +39,7 @@ module.exports = {
       state.refWord = wordList[getRandomInt(wordList.length - 1)].split("");
     }
     state.won = false;
-    state.timeIsOff = false;
+    state.lost = false;
     state.timer = 0;
     state.currWord = getCurrWord(state.refWord);
     state.misses = [];

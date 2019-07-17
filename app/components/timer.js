@@ -8,7 +8,7 @@ class Timer {
     state.eventBus.once("mount", () => {
       timerId = setTimeout(() => {
         if (this.timer === 30) {
-          state.set("timeIsOff", true);
+          state.set("lost", true);
         } else {
           state.set("timer", this.timer + 1);
         }
@@ -22,17 +22,18 @@ class Timer {
 
   getColor() {
     if (this.timer < 15) {
-      return 'green';
+      return "green";
     }
     if (this.timer < 25) {
-      return 'yellow';
+      return "yellow";
     }
-    return 'red';
+    return "red";
   }
 
   render() {
     return `
-      You have <span class="timer" style="border: 1px solid ${this.getColor()};">${30 - this.timer}</span> seconds to guess!
+      You have <span class="timer" style="border: 1px solid ${this.getColor()};">${30 -
+      this.timer}</span> seconds to guess!
     `;
   }
 }

@@ -16,7 +16,7 @@ function getProps() {
   return {
     started: state.get("started"),
     won: state.get("won"),
-    lost: state.get("timeIsOff") || state.get("misses").length === 7,
+    lost: state.get("lost"),
     currWord: state.get("currWord"),
     misses: state.get("misses"),
     timer: state.get("timer")
