@@ -55,7 +55,7 @@ class App {
           title: "try again"
         }).render()} 😉
         <br />
-        ${new Hangman({ misses }).render()}
+        ${new Hangman({ shift: 7 }).render()}
       </div>
       `;
     }
@@ -79,7 +79,7 @@ class App {
           </div>
         </div>
         <div class="right-col">
-          ${new Hangman({ misses }).render()}
+          ${new Hangman({ shift: misses.length }).render()}
           <div class="misses">Misses: ${misses.join(", ")}</div>
         </div>
       </div>

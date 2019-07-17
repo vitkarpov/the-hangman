@@ -2,6 +2,6 @@ const Hangman = require("./hangman");
 
 describe("Hangman", () => {
   it("renders correctly", () => {
-    expect(new Hangman({ misses: ["a", "b", "c"] }).render()).toMatchSnapshot();
+    expect(new Hangman({ shift: 3 }).render()).toMatchSnapshot();
   });
 });

@@ -1,12 +1,12 @@
 class Hangman {
-  constructor({ misses }) {
-    this.misses = misses;
+  constructor({ shift }) {
+    this.shift = shift;
   }
 
   render() {
     return `
       <div class="hangman-sprite"
-        style="background-position: 0 ${-256 * this.misses.length}px;"
+        style="background-position: 0 ${-256 * this.shift}px;"
       ></div>
     `;
   }
