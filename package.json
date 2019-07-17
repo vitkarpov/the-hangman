@@ -4,7 +4,7 @@
   "description": "The Hangman Game. Pure JavaScript. No Frameworks.",
   "scripts": {
     "start": "./node_modules/.bin/parcel hangman.html",
-    "test": "./node_modules/.bin/jest ./app/**/*.test.js"
+    "test": "./node_modules/.bin/jest"
   },
   "author": "Viktor Karpov <viktor.s.karpov@gmail.com>",
   "license": "MIT",
