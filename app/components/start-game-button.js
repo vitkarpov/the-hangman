@@ -1,7 +1,9 @@
 const state = require("../lib/state");
 
 class StartGameButton {
-  constructor() {
+  constructor({ title }) {
+    this.title = title;
+
     state.eventBus.once("mount", () => {
       document
         .querySelector(".start-button")
@@ -20,7 +22,7 @@ class StartGameButton {
   }
 
   render() {
-    return '<button class="start-button">Go</button>';
+    return `<button class="start-button">${this.title}</button>`;
   }
 }
 
