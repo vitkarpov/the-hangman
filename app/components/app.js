@@ -6,36 +6,64 @@ const guess = require("../lib/guess");
 
 class App {
   constructor() {
-    this.onKeyPress = this.onKeyPress.bind(this);
-
     state.eventBus.on("mount", () => {
-      document.addEventListener("keypress", this.onKeyPress);
+      document.addEventListener("keyup", this.onKeyUp);
     });
     state.eventBus.on("ummount", () => {
-      document.removeEventListener("keypress", this.onKeyPress);
+      document.removeEventListener("keyup", this.onKeyUp);
     });
   }
 
-  onKeyPress(e) {
-    if (!state.started) {
+  onKeyUp(e) {
+    if (!state.get('started') || state.get('won')) {
       return;
     }
-    if ('a' <= e.key && e.key <= 'z') {
-      state.currWord = guess(e.key, state.refWord, state.currWord);
+    if ("a" <= e.key && e.key <= "z") {
+      const nextWord = guess(e.key, state.get('refWord'), state.get('currWord'));
+
+      if (nextWord.join("") === state.get('currWord').join("")) {
+        state.get('misses').push(e.key);
+      } else if (nextWord.join("") === state.get('refWord').join("")) {
+        state.set('won', true);
+      }
+      state.set('currWord', nextWord);
       state.eventBus.emit("rerender");
     }
   }
 
-  render({ started, lost, timer, currWord }) {
+  render({ started, lost, won, misses, timer, currWord }) {
     if (!started) {
-      return new StartGameButton().render();
+      return new StartGameButton({ title: "Start the game!" }).render();
     }
     if (lost) {
-      return "You lost the game!";
+      return `You couldn't make it this time, let's ${new StartGameButton({
+        title: "try again"
+      }).render()} 😉`;
+    }
+    if (won) {
+      return `You did it, congrats! 🎉 Do you want to ${new StartGameButton(
+        { title: "play again" }
+      ).render()}?`;
     }
     return `
-      <div class="timer-wrapper">${new Timer({ timer }).render()}</div>
-      <div class="word">${new Word({ currWord }).render()}</div>
+      <div class="layout">
+        <div class="left-col">
+          <div class="timer-wrapper">
+            ${new Timer({ timer }).render()}
+          </div>
+          <div class="word">
+            ${new Word({ currWord }).render()}
+          </div>
+        </div>
+        <div class="right-col">
+          <div class="hangman-sprite"
+            style="background-position: 0 ${-256 * misses.length}px;"
+          ></div>
+          <div class="misses">
+            Misses: ${misses.join(", ")}
+          </div>
+        </div>
+      </div>
     `;
   }
 }

@@ -17,7 +17,7 @@ class StartGameButton {
   }
 
   onButtonClick() {
-    state.started = true;
+    state.reset();
     state.eventBus.emit("rerender");
   }
 

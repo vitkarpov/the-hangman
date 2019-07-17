@@ -1,0 +1,64 @@
+html {
+  height: 100%;
+}
+
+body {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+#app {
+  margin: 20px 0;
+}
+
+.footer {
+  background: lightyellow;
+  padding: 12px;
+  margin: 0 -12px;
+  margin-top: auto;
+}
+
+.start-button {
+  border: 1px solid lightgrey;
+  background: lightyellow;
+  border-radius: 3px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.hangman-sprite {
+  width: 256px;
+  height: 256px;
+  background-image: url('./assets/hangman-sprite.png');
+  background-repeat: no-repeat;
+}
+
+.layout {
+  display: flex;
+}
+
+.left-col,
+.right-col {
+  flex: 1;
+}
+
+.timer {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+  margin: 20px 0;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.word-item {
+  display: inline-block;
+  border: 1px solid lightgray;
+  padding: 5px;
+  width: 10px;
+  margin: 0 4px;
+  font-weight: bold;
+}

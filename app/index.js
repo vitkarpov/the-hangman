@@ -14,10 +14,11 @@ document.addEventListener("DOMContentLoaded", renderApp);
 
 function getProps() {
   return {
-    started: state.started,
-    won: state.won,
-    lost: state.lost,
-    currWord: state.currWord,
-    timer: state.timer
+    started: state.get("started"),
+    won: state.get("won"),
+    lost: state.get("timeIsOff") || state.get("misses").length === 7,
+    currWord: state.get("currWord"),
+    misses: state.get("misses"),
+    timer: state.get("timer")
   };
 }
