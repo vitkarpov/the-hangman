@@ -1,6 +1,8 @@
 # The Hangman Game. Pure JavaScript. No Frameworks.
 
-🚀 [**DEMO**](https://vitkarpov.github.io/the-hangman)
+## Demo
+
+🚀 [**CHECK IT OUT**](https://vitkarpov.github.io/the-hangman)
 
 ![](./docs/example.gif)
 
@@ -8,8 +10,20 @@
 - Clean non-over engineered code.
 - Unit Tests.
 
-### Run locally
+## Run locally
 
 ```
 $ yarn && yarn start
 ```
+
+![](./docs/yarn-start.png)
+
+Go to `http://localhost:1234`
+
+## Production build
+
+```
+$ yarn build
+```
+
+All the files end up in `dist` folder, paths are relative.
